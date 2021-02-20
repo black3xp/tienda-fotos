@@ -1,0 +1,14 @@
+<div class="col-lg-<%= columnas %> ">
+    <div class="card">
+      <img src="images/fotos/<%= contenido %> " class="card-img-top img-tarjeta" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= titulo %> </h5>
+      </div>
+      <% if (session.cliente) { %>
+        <div class="card-footer text-center">
+          <a href="/agregar-carro-compra/<%= id %>" class="btn"><i class="bi bi-cart-plus"></i></a>
+          <a href="#!" class="btn"><i class="bi bi-list-task"></i> Lista de deseos</a>
+        </div>
+      <% } %> 
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+    <%- partial('../../layouts/partials/header') %> 
+    <%- partial('../../layouts/partials/navbar') %> 
+    <h1>Admin - agregar fotos</h1>
+    <form action="/admin/procesar-agregar-foto" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="inpTitulo" class="form-label">Titulo</label>
+            <input type="text" class="form-control" id="inpTitulo" required name="titulo">
+          </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Subir imagen</label>
+            <input class="form-control" type="file" name="foto" required id="formFile">
+        </div>
+        <button type="submit" class="btn btn-success mb-3">Continuar</button>
+    </form>
+    <%- partial('../../layouts/partials/footer') %> 
+  </div>

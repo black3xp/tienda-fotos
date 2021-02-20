@@ -1,0 +1,41 @@
+<div class="container">
+    <%- partial('../../layouts/partials/header') %> 
+    <%- partial('../../layouts/partials/navbar') %> 
+    <h1>Clientes</h1>
+    <% flash.get('mensaje').forEach(function(msg){%> 
+      <div class="alert alert-success mt-2 mb-2" role="alert">
+        <%= msg %> 
+      </div>
+    <% }) %> 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Activo</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% clientes.forEach(cliente => { %>
+            <tr>
+                <th scope="row"><%= cliente.id %> </th>
+                <td><%= cliente.nombre %></td>
+                <td><%= cliente.email %></td>
+                <td><%= (cliente.activo) ? 'Si' : 'No' %> </td>
+                <td style="text-align: right">
+                  <a class="btn btn-success btn-sm" href="/admin/cliente/ordenes/<%= cliente.id %>">Ver ordenes</a>
+                  <% if (cliente.activo) { %>
+                    <a class="btn btn-danger btn-sm" href="/admin/cliente/desactivar/<%= cliente.id %>">Desactivar</a>
+                  <% } %>
+                  <% if (!cliente.activo) {%> 
+                    <a class="btn btn-primary btn-sm" href="/admin/cliente/activar/<%= cliente.id %>">Activar</a>
+                  <% } %> 
+                </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <%- partial('../../layouts/partials/footer') %> 
+  </div>

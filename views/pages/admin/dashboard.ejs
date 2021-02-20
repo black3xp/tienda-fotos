@@ -1,0 +1,45 @@
+<div class="container">
+    <%- partial('../../layouts/partials/header') %> 
+    <%- partial('../../layouts/partials/navbar') %> 
+    <h1>Dashboard</h1>
+    <% flash.get('mensaje').forEach(function(msg){%> 
+      <div class="alert alert-success mt-2 mb-2" role="alert">
+        <%= msg %> 
+      </div>
+    <% }) %> 
+      <div class="row">
+        <div class="col-lg-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Administradores</h5>
+              <h6 class="card-subtitle mb-2 text-muted" style="font-size: 30px;"><%= admin %></h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Clientes</h5>
+              <h6 class="card-subtitle mb-2 text-muted" style="font-size: 30px;"><%= clientes %> </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Fotos</h5>
+              <h6 class="card-subtitle mb-2 text-muted" style="font-size: 30px;"><%= fotos %></h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Ordenes</h5>
+              <h6 class="card-subtitle mb-2 text-muted" style="font-size: 30px;"><%= ordenes %></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%- partial('../../layouts/partials/footer') %> 
+  </div>

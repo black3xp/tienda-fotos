@@ -1,0 +1,64 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4" style="border-radius: 10px;">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/acerca-de">Acerca de</a>
+          </li>
+          <% if (session && session.admin ) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/principal">Principal Admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/clientes">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/administradores">Administradores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/dashboard">Dashboard</a>
+            </li>
+          <% } %> 
+        </ul>
+        <ul class="navbar-nav d-flex">
+            <% if (!session || !session.cliente && !session.admin ) { %>
+              <li class="nav-item">
+              <a class="nav-link btn btn-outline-secondary" aria-current="page" href="/registro">Registro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/iniciar-sesion">Login</a>
+              </li>
+            <% } %> 
+            <% if (session && session.cliente) { %>
+              <li class="nav-item">
+                <a class="nav-link btn" aria-current="page" href="#!">Hola <strong><%= session.cliente.nombre %></strong> &nbsp;|</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-light pr-3" aria-current="page" href="/mis-ordenes">Mis ordenes &nbsp;&nbsp;|</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn" aria-current="page" href="/carro-de-compras"><i class="bi bi-cart2"></i> <span class="badge bg-danger"> <%= (session.carritoCompra) ? session.carritoCompra.length : 0 %> </span></strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-outline-danger" aria-current="page" href="/cerrar-sesion">Cerrar session</a>
+              </li>
+            <% } %>  
+            <% if (session && session.admin) { %>
+              <li class="nav-item">
+                <a class="nav-link btn" aria-current="page" href="#!">Hola admin <strong><%= session.admin.nombre %></strong> &nbsp;|</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-outline-danger" aria-current="page" href="/admin/cerrar-sesion">Cerrar session</a>
+              </li>
+            <% } %> 
+          </ul>
+      </div>
+    </div>
+  </nav>

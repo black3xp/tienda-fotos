@@ -1,0 +1,23 @@
+<div class="container">
+    <%- partial('../../layouts/partials/header') %> 
+    <%- partial('../../layouts/partials/navbar') %> 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Foto</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% orden.forEach(i => { %>  
+          <tr>
+                <td><img width="70" src="/images/fotos/<%= i.foto.contenido%>" alt="<%= i.foto.titulo %> "> </td>
+                <td><%= i.foto.titulo %> </td>
+                <td><%= i.foto.activa %> </td>
+            </tr>
+            <% }); %> 
+        </tbody>
+      </table>
+    <%- partial('../../layouts/partials/footer') %> 
+  </div>
